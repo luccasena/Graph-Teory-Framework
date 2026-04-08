@@ -11,11 +11,20 @@ public class Graph {
     private Map<String, Integer> vertexIndices;
     private Integer quantityVertex;
     private int[][] matrix;
+    private boolean isDigraph;
+
+    public Graph(boolean isDigraph) {
+        this.quantityVertex = 0;
+        this.vertices = new HashMap<>();
+        this.vertexIndices = new HashMap<>();
+        this.isDigraph = isDigraph;
+    }
 
     public Graph() {
         this.quantityVertex = 0;
         this.vertices = new HashMap<>();
         this.vertexIndices = new HashMap<>();
+        this.isDigraph = false;
     }
 
     public void addVertex(Vertex vertex) {
@@ -34,13 +43,13 @@ public class Graph {
             int indexColumn = vertexIndices.get(secondVertex);
 
             this.matrix[indexLine][indexColumn] += 1;
-            this.matrix[indexColumn][indexLine] += 1;
+            if (!isDigraph) this.matrix[indexColumn][indexLine] += 1;
 
             vertex1.setDegree(vertex1.getDegree() + 1);
             vertex2.setDegree(vertex2.getDegree() + 1);
 
         } else {
-            IO.println("Vertice não encontrado");
+            IO.println("Vertice nao encontrado");
 
         }
     }
@@ -77,7 +86,7 @@ public class Graph {
 
     public void printVertices(){
 
-        this.vertices.forEach((_, vertex) -> IO.println("Vertices: "+vertex.getValue()+" | Degree: "+vertex.getDegree()));
+        this.vertices.forEach((_, vertex) -> IO.println("Vertex: "+vertex.getValue()+" | Degree: "+vertex.getDegree()));
 
     }
 
