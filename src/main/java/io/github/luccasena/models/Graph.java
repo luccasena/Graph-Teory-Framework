@@ -46,7 +46,12 @@ public class Graph {
             if (!isDigraph) this.matrix[indexColumn][indexLine] += 1;
 
             vertex1.setDegree(vertex1.getDegree() + 1);
+
+            getVertices().get(vertex1.getValue()).addAdjacent(vertex2);
+
             vertex2.setDegree(vertex2.getDegree() + 1);
+            getVertices().get(vertex2.getValue()).addAdjacent(vertex1);
+
 
         } else {
             IO.println("Vertice nao encontrado");
@@ -88,6 +93,10 @@ public class Graph {
 
         this.vertices.forEach((_, vertex) -> IO.println("Vertex: "+vertex.getValue()+" | Degree: "+vertex.getDegree()));
 
+    }
+
+    public Vertex getVerticeByLabel(String Label) {
+        return this.getVertices().get(Label);
     }
 
 }

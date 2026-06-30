@@ -1,26 +1,28 @@
 package io.github.luccasena.models;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Vertex {
+    @EqualsAndHashCode.Include
     private String value;
+    private List<Vertex> neighborhood;
     private int degree;
 
     public Vertex(String value) {
         this.value = value;
+        this.neighborhood = new ArrayList<>();
     }
 
-    public String getValue() {
-        return value;
+    public void addAdjacent(Vertex adjacent) {
+        this.neighborhood.add(adjacent);
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public int getDegree() {
-        return degree;
-    }
-
-    public void setDegree(int degree) {
-        this.degree = degree;
-    }
 }
