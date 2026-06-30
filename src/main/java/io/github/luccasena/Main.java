@@ -28,15 +28,12 @@ public class Main {
         graph.addEdge("4", "1");
         graph.addEdge("5", "6");
         graph.addEdge("5", "7");
-        graph.addEdge("6", "2");
-        graph.addEdge("7", "4");
         graph.addEdge("7", "6");
 
         Vertex origem = graph.getVerticeByLabel("1");
         Vertex destino = graph.getVerticeByLabel("7");
         bfs.executarBFS(graph, origem);
         bfs.imprimirCaminho(destino);
-
 
     }
 }

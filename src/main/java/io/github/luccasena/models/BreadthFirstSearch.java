@@ -1,5 +1,6 @@
 package io.github.luccasena.models;
 
+import io.github.luccasena.exceptions.ResearchError;
 import lombok.Getter;
 
 import java.util.*;
@@ -62,8 +63,7 @@ public class BreadthFirstSearch {
     public void imprimirCaminho(Vertex destino) {
 
         if (!visitados.contains(destino)) {
-            IO.println("Não existe caminho entre os vértices.");
-            return;
+            throw new ResearchError("Nao existe caminho entre os vertices.");
         }
 
         List<Vertex> caminho = new ArrayList<>();
